@@ -85,7 +85,8 @@ edition = \"2021\"
       (find-file filename)))
 
 (defun rust-playground-set-point ()
-  (when (derived-mode-p 'rust-mode)
+  (when (or (derived-mode-p 'rust-mode)
+            (derived-mode-p 'rust-ts-mode))
     (goto-char (point-max))
     (re-search-backward "}")
     (backward-char 1)))
